@@ -93,8 +93,6 @@ const CrearPrueba = () => {
       fecha: formattedFecha
     };
 
-    ('Datos de la prueba:', pruebaData); // Log para verificar los datos antes de enviarlos
-
     try {
       await axios.post(`${BASE_URL}/api/pruebas/create-prueba`, pruebaData, {
         headers: { 

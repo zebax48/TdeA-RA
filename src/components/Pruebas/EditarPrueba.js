@@ -34,7 +34,6 @@ const EditarPrueba = () => {
           },
         });
         const pruebaData = response.data.prueba;
-        ('Prueba data:', pruebaData);
 
         if (!pruebaData.programa || !pruebaData.programa._id) {
           console.error('Programa no definido en la prueba:', pruebaData);

@@ -57,7 +57,6 @@ export const AuthProvider = ({ children }) => {
       };
       setAuth(userData);
       localStorage.setItem('auth', JSON.stringify(userData)); // Guardar en localStorage
-      ('Datos almacenados:', userData);
     } catch (error) {
       console.error('Error al iniciar sesión:', error);
       window.alert('Usuario o contraseña incorrecta');
@@ -67,7 +66,6 @@ export const AuthProvider = ({ children }) => {
   const logout = async () => {
     try {
       const { username, token } = auth;
-      ('Usuario a cerrar sesión:', username, "Token:", token);
       await axios.get(`${BASE_URL}/api/users/logout/${username}`, {
         headers: {
           Authorization: auth.token,

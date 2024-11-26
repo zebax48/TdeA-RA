@@ -57,8 +57,6 @@ const Results = () => {
       .catch(error => console.error('Error fetching data:', error));
   }, [programId, programName, selectedSemester]);
 
-  (tests);
-
   const handleSemesterChange = event => {
     setSelectedSemester(event.target.value);
   };
