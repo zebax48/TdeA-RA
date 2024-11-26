@@ -1,0 +1,35 @@
+.header {
+    background-color: #004d40; /* Verde oscuro */
+    color: #fff; /* Blanco */
+    padding: 10px 0;
+    text-align: center;
+  }
+  
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .header-title {
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  .header-nav {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .header-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  
+  .header-link:hover {
+    color: #004d40; /* Verde claro */
+  }

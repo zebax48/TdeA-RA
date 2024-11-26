@@ -1,0 +1,75 @@
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .login-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f2f2f2; /* Color de fondo */
+  }
+  
+  .login-box {
+    background-color: #ffffff; /* Blanco */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  .logo {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+  
+  .input-group {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  .input-field {
+    width: 80%;
+    padding: 10px 40px 10px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .icon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #999;
+  }
+  
+  .login-button {
+    background-color: #004d40; /* Verde oscuro */
+    color: #fff; /* Blanco */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+  }
+  
+  .login-button:hover {
+    background-color: #00796b; /* Verde claro */
+  }
+  
+  .recover-link {
+    display: block;
+    margin-top: 20px;
+    color: #004d40; /* Verde oscuro */
+    text-decoration: none;
+  }
+  
+  .recover-link:hover {
+    text-decoration: underline;
+  }

@@ -1,0 +1,43 @@
+/* Contenedor general para las gráficas */
+.container {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+/* Títulos de las gráficas */
+.title {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+
+/* Estilo para los elementos select */
+.select-container {
+    margin-bottom: 1em;
+}
+
+.select-container select {
+    width: 100%;
+    padding: 0.5em;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+}
+
+.select-container .react-select__control {
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+/* Estilo para los gráficos */
+.bar-chart-container {
+    max-width: 600px; /* Limitar el ancho de las gráficas */
+    margin: auto; /* Centrar las gráficas */
+}
+
+/* Ajuste para gráficas de RA individuales */
+.ra-chart-container {
+    max-width: 100%; /* Ajustar al tamaño del contenedor */
+    margin-bottom: 2em;
+}

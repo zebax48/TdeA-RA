@@ -1,0 +1,40 @@
+.edit-user {
+    padding: 20px;
+  }
+
+.td {
+  text-align: center;
+}
+  .edit-user h2 {
+    margin-bottom: 20px;
+  }
+  
+  .edit-user .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .edit-user .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .edit-user .form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+
+  .edit-user button {
+    background-color: #004d40;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .edit-user button:hover {
+    background-color: #007e2b;
+  }
+

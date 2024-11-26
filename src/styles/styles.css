@@ -1,0 +1,237 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Header Styles */
+  .header {
+    background-color: #004d40;
+    color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .menu-icon {
+    font-size: 24px;
+    cursor: pointer;
+    margin-right: 20px;
+  }
+  
+  .header-title {
+    font-size: 18px;
+  }
+  
+  /* Sidebar Styles */
+  .sidebar-container {
+    display: flex;
+  }
+  
+  .sidebar {
+    background-color: #e6e6e667;
+    color: rgb(0, 0, 0);
+    width: 250px;
+    height: 100vh;
+    padding-top: 60px; /* Ajusta para que no se solape con el header */
+    position: fixed;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .sidebar.closed {
+    transform: translateX(-100%);
+  }
+  
+  .profile {
+    text-align: center;
+    padding: 0px;
+  }
+
+  .profile-text{
+    text-align: left;
+  }
+  
+  .profile-pic {
+    border-radius: 50%;
+    height: 100px;
+  }
+  
+  .sidebar-menu {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar-item {
+    padding: 2px 20px;
+    padding-top: 10px;
+    padding-left: center;
+    cursor: pointer;
+    border-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.068);
+  }
+
+  .sidebar-item:hover {
+    color:#007510;
+    transform: translateX(10px);
+  }
+
+  a {
+    color:#ffffff;
+    text-decoration: none;
+  }
+  .submenu {
+    list-style-type: none;
+    padding: 5px;
+    padding-left: 20px;
+    display: none;
+  }
+  
+  .submenu.open {
+    display: block;
+  }
+  
+  /* Main Content Styles */
+  
+  .content {
+    margin-left: 250px;
+    padding: 80px 20px 20px; /* Ajusta el padding-top para que no se solape con el header */
+    transition: margin-left 0.3s;
+  }
+  
+  .content.sidebar-closed {
+    margin-left: 0;
+  }
+  
+  @media (max-width: 768px) {
+    .sidebar {
+      width: 100%;
+    }
+  
+    .content {
+      margin-left: 0;
+    }
+  }
+
+  .programs-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .program-card {
+    flex: 1 1 calc(33.333% - 20px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 10px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+    cursor: pointer;
+  }
+  
+  .program-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .program-card img {
+    width: 20%;
+    height: auto;
+    border-radius: 100px;
+  }
+  
+  .program-card h3 {
+    margin-top: 10px;
+    font-size: 1.2em;
+    text-align: center;
+  }
+
+   /*Card Usuario*/
+    .li {
+    padding-top: 10px;
+    }
+
+    .li:hover {
+        color:#007510;
+        transform: translateX(10px);
+    }
+
+
+   .card-client {
+    background: #2cb575d7;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    border: 4px solid #ffffffb4;
+    box-shadow: 0 6px 10px rgba(207, 212, 222, 1);
+    border-radius: 10px;
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    transition: all 0.3s ease;
+  }
+  
+  .card-client:hover {
+    transform: translateY(-5px);
+  }
+  
+  .user-picture {
+    overflow: hidden;
+    object-fit: cover;
+    width: 5rem;
+    height: 5rem;
+    border: 4px solid #ffffff;
+    border-radius: 999px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+  }
+  
+  .user-picture svg {
+    width: 2.5rem;
+    fill: currentColor;
+  }
+  
+  .name-client {
+    margin: 0;
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: 18px;
+  }
+  
+  .name-client span {
+    display: block;
+    font-weight: 200;
+    font-size: 16px;
+  }
+  
+  .social-media:before {
+    content: " ";
+    display: block;
+    width: 100%;
+    height: 2px;
+    margin: 20px 0;
+    background: #ffffff;
+  }
+  
+  .social-media a {
+    position: relative;
+    margin-right: 15px;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .social-media a:last-child {
+    margin-right: 0;
+  }
+  
+  .social-media a svg {
+    width: 1.1rem;
+    fill: currentColor;
+  }
+  
