@@ -4,10 +4,12 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../Layout/Layout';
 import { BASE_URL } from '../config';
+import Spinner from '../Spinner';
 import '../../styles/AdminUsers.css';
 
 const AdminUsers = () => {
   const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState({
     username: '',
     cc: '',
@@ -25,6 +27,7 @@ const AdminUsers = () => {
   }, []);
 
   const fetchUsers = async () => {
+    setLoading(true);
     try {
       const response = await axios.get(`${BASE_URL}/api/users`, {
         headers: {
@@ -39,6 +42,8 @@ const AdminUsers = () => {
       } else {
         console.error('Error al actualizar el usuario:', error);
       }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -90,6 +95,7 @@ const AdminUsers = () => {
     <Layout>
       <div className="admin-users">
       <h1>Usuarios</h1>
+        {loading && <Spinner size={60} fullScreen={true}/>}
         <button onClick={() => navigate('/register')}>Crear Usuario</button>
         <table>
           <thead>

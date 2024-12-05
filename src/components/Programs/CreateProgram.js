@@ -4,10 +4,12 @@ import { useAuth } from '../AuthContext/AuthContext';
 import axios from 'axios';
 import { BASE_URL } from '../config';
 import Layout from '../Layout/Layout';
+import Spinner from '../Spinner';
 import '../../styles/EditUser.css';
 
 const CreateProgram = () => {
   const { auth } = useAuth();
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     facultad: '',
     nombre: '',
@@ -63,6 +65,7 @@ const CreateProgram = () => {
       window.alert('Seleccione una Facultad para el programa');
       return;
     }
+    setLoading(true);
     try {
       const response = await axios.post(`${BASE_URL}/api/programs/create`, formData, {
         headers: {
@@ -94,6 +97,8 @@ const CreateProgram = () => {
         console.error('Error al crear el programa:', error);
         window.alert('Error al crear el programa. Inténtelo nuevamente.');
       }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -156,7 +161,9 @@ const CreateProgram = () => {
           />
           <span>Registro Calificado</span>
         </label>
-        <button className="submit">Crear</button>
+        <button className="submit" disabled={loading}>
+          {loading ? <Spinner size={16} color="#fff" /> : 'Crear'}
+        </button>
       </form>
     </Layout>
   );

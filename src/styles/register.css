@@ -62,7 +62,7 @@
     padding: 8px 10px;
     width: 100%;
     margin-top: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
     box-sizing: border-box;
   }
   
@@ -77,6 +77,7 @@
     border: none;
     border-radius: 4px;
     padding: 10px;
+    margin-top: 15px;
     cursor: pointer;
   }
   
@@ -95,5 +96,4 @@
   
   span {
     display: block;
-    margin-bottom: 5px;
   }

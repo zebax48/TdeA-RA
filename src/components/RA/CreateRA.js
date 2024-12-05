@@ -4,10 +4,12 @@ import { useAuth } from '../AuthContext/AuthContext';
 import axios from 'axios';
 import Layout from '../Layout/Layout';
 import { BASE_URL } from '../config';
+import Spinner from '../Spinner';
 import '../../styles/EditUser.css';
 
 const CreateRA = () => {
   const { auth } = useAuth();
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     nombre: '',
     facultad: '',
@@ -26,6 +28,7 @@ const CreateRA = () => {
       window.alert('Seleccione una Facultad para el RA');
       return;
     }
+    setLoading(true);
     try {
       await axios.post(`${BASE_URL}/api/ra/create`, formData, {
         headers: {
@@ -45,6 +48,8 @@ const CreateRA = () => {
       } else {
         console.error('Error al crear el resultado de aprendizaje:', error);
       }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -93,7 +98,9 @@ const CreateRA = () => {
           />
           <span>Descripción</span>
         </label>
-        <button className="submit">Crear</button>
+        <button className="submit" disabled={loading}>
+          {loading ? <Spinner size={16} color="#fff" /> : 'Crear'}
+        </button>
       </form>
     </Layout>
   );

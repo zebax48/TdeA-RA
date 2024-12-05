@@ -4,11 +4,13 @@ import axios from 'axios';
 import Layout from '../Layout/Layout';
 import { useAuth } from '../AuthContext/AuthContext';
 import { BASE_URL } from '../config';
+import Spinner from '../Spinner';
 import '../../styles/ListRA.css';
 
 const Pruebas = () => {
   const navigate = useNavigate();
   const { auth } = useAuth();
+  const [loading, setLoading] = useState(false);
   const [pruebas, setPruebas] = useState([]);
   const [search, setSearch] = useState({
     nombre: '',
@@ -23,6 +25,7 @@ const Pruebas = () => {
 
   useEffect(() => {
     const fetchPruebas = async () => {
+      setLoading(true);
       try {
         const response = await axios.get(`${BASE_URL}/api/pruebas`, {
           headers: {
@@ -32,6 +35,8 @@ const Pruebas = () => {
         setPruebas(response.data);
       } catch (error) {
         console.error('Error fetching pruebas:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -88,6 +93,7 @@ const Pruebas = () => {
         <p className='title'>Pruebas</p>
         <button onClick={() => navigate('/crear-prueba')}>Crear Prueba</button>
         <button onClick={() => navigate('/grupos')}>Ver grupos</button>
+        {loading && <Spinner size={60} fullScreen={true}/>}
         <table>
           <thead>
             <tr>

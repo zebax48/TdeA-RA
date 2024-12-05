@@ -4,10 +4,12 @@ import { useAuth } from '../AuthContext/AuthContext';
 import axios from 'axios';
 import Layout from '../Layout/Layout';
 import { BASE_URL } from '../config';
+import Spinner from '../Spinner';
 import '../../styles/ListRA.css';
 
 const ListRA = () => {
   const { auth } = useAuth();
+  const [loading, setLoading] = useState(false);
   const [resultados, setResultados] = useState([]);
   const navigate = useNavigate();
   const [search, setSearch] = useState({
@@ -21,6 +23,7 @@ const ListRA = () => {
   }, []);
 
   const fetchResultados = async () => {
+    setLoading(true);
     try {
       const response = await axios.get(`${BASE_URL}/api/ra`, {
         headers: {
@@ -35,6 +38,8 @@ const ListRA = () => {
       } else {
         console.error('Error al obtener los resultados de aprendizaje:', error);
       }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -74,6 +79,7 @@ const ListRA = () => {
     <Layout>
       <div className="admin-users">
         <p className='title'>Resultados de Aprendizaje</p>
+        {loading && <Spinner size={60} fullScreen={true}/>}
         <button>
             <Link to="/crear-ra" className="button">
                  Crear RA

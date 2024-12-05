@@ -7,10 +7,12 @@ import { useNavigate } from 'react-router-dom';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { MdAdd } from 'react-icons/md';
 import { BASE_URL } from '../config';
+import Spinner from '../Spinner';
 
 const CrearPrueba = () => {
   const navigate = useNavigate();
   const { auth } = useAuth();
+  const [loading, setLoading] = useState(false);
   const [nombre, setNombre] = useState('');
   const [semestre, setSemestre] = useState('');
   const [descripcion, setDescripcion] = useState('');
@@ -45,6 +47,7 @@ const CrearPrueba = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
         const raResponse = await axios.get(`${BASE_URL}/api/ra/`, {
           headers: {
@@ -74,6 +77,8 @@ const CrearPrueba = () => {
           window.alert("Vaya, ha ocurrido un error al obtener los datos para crear pruebas");
           console.error('Error al obtener datos para crear PRUEBAS:', error);
         }
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -92,7 +97,7 @@ const CrearPrueba = () => {
       cantidadGrupos,
       fecha: formattedFecha
     };
-
+    setLoading(true);
     try {
       await axios.post(`${BASE_URL}/api/pruebas/create-prueba`, pruebaData, {
         headers: { 
@@ -109,6 +114,8 @@ const CrearPrueba = () => {
         window.alert("Faltan campos para poder crear la prueba, intenta nuevamente");
         console.error('Error al crear PRUEBAS:', error);
       }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -151,6 +158,7 @@ const CrearPrueba = () => {
       <div className="admin-users">
         <form className="form">
           <p className="title">Crear prueba</p>
+          {loading && <Spinner size={60} fullScreen={true}/>}
           <div>
             <label>Nombre de la prueba</label>
             <input

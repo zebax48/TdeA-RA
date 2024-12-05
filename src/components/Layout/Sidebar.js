@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import SidebarItem from './SidebarItem';
 import '../../styles/styles.css';
 import { useAuth } from '../AuthContext/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const Sidebar = ({ isOpen }) => {
     const {auth} = useAuth(); 
+    const navigate = useNavigate();
     const nameAuth = auth.nombres;
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 
@@ -33,25 +35,25 @@ const Sidebar = ({ isOpen }) => {
         <SidebarItem title="Administrar Usuarios" isOpen={isUserMenuOpen} onToggle={handleUserMenuToggle}>
         {isOpen && (
             <ul className={`submenu ${isUserMenuOpen ? 'open' : ''}`}>
-                <a href='/register'>
+                <a onClick={() => navigate('/register')}>
                     <li className='li'>Crear usuario</li>
                 </a>
               
-              <a href='/users'>
+              <a onClick={() => navigate('/users')}>
                 <li className='li'>Ver usuarios</li>
               </a>
               
             </ul>
           )}
         </SidebarItem>
-        <a href='/programas'>
+        <a onClick={() => navigate('/programas')}>
             <li className='sidebar-item'>Programas</li>
         </a>
-        <a href='/ra'>
+        <a onClick={() => navigate('/ra')}>
            <li className='sidebar-item'>Resultados de Aprendizaje</li>
         </a>
         
-        <a href='/pruebas'>
+        <a onClick={() => navigate('/pruebas')}>
           <li className='sidebar-item'>Pruebas</li>
         </a>
         

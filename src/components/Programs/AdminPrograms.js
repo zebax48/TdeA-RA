@@ -3,11 +3,13 @@ import { useAuth } from '../AuthContext/AuthContext';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../Layout/Layout';
+import Spinner from '../Spinner';
 import '../../styles/AdminUsers.css';
 import { BASE_URL } from '../config';
 
 const AdminPrograms = () => {
   const [programs, setPrograms] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState({
     facultad: '',
     nombre: '',
@@ -22,6 +24,7 @@ const AdminPrograms = () => {
   }, []);
 
   const fetchPrograms = async () => {
+    setLoading(true);
     try {
       const response = await axios.get(`${BASE_URL}/api/programs`, {
         headers: {
@@ -36,6 +39,8 @@ const AdminPrograms = () => {
       } else {
         console.error('Error al obtener los programas:', error);
       }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -84,6 +89,7 @@ const AdminPrograms = () => {
     <Layout>
       <div className="admin-users">
         <p className='title'>Programas</p>
+        {loading && <Spinner size={60} fullScreen={true}/>}
         <button onClick={() => navigate('/crear-programa')}>Crear Programa</button>
         <table>
           <thead>

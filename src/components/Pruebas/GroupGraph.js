@@ -6,6 +6,7 @@ import { Bar } from "react-chartjs-2";
 import "chart.js/auto";
 import Layout from '../Layout/Layout';
 import { BASE_URL } from '../config';
+import Spinner from '../Spinner';
 import '../../styles/Graph.css';
 
 const GroupGraph = () => {
@@ -40,7 +41,7 @@ const GroupGraph = () => {
     }
 
     if (!groupData) {
-        return <div>Loading...</div>;
+        return <Spinner size={60} fullScreen={true}/>;
     }
 
     // Configuración de los datos para la gráfica general del grupo

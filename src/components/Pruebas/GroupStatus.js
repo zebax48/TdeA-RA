@@ -4,6 +4,7 @@ import axios from 'axios';
 import Layout from '../Layout/Layout';
 import { Link } from 'react-router-dom';
 import { BASE_URL } from '../config';
+import Spinner from '../Spinner';
 import '../../styles/EditUser.css';
 
 const GroupStatus = () => {
@@ -25,10 +26,9 @@ const GroupStatus = () => {
       });
 
       let fetchedTests = response.data;
+      setEvaluatorName(auth.nombres + " " + auth.apellidos);
 
-      if (auth.role === 'Evaluador') {
-        setEvaluatorName(auth.nombres + " " + auth.apellidos);
-        
+      if (auth.role === 'Evaluador') {      
         // Filtrar las pruebas Y sus grupos
         fetchedTests = fetchedTests.map(test => ({
           ...test,
@@ -88,7 +88,7 @@ const GroupStatus = () => {
     test.grupos.filter(group => getProgressStatus(group, test).status === '✔')
   );
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Spinner size={60} fullScreen={true}/>;
 
   return (
     <Layout>
